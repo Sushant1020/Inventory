@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Purchase Details</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+</head>
+<body>
+<a th:replace="~{header::header}"></a>
+<h1 align="center">Add Purchase Details</h1>
+<form action="/addPurchase" method="post">
+
+<div class="container">
+
+    <div class="row">
+<div align="right" class="col-6 mb-3 mt-3">
+    <label for="purpid">Select Product id</label>
+</div>
+    <div align="left" class="col-6 mb-3 mt-3">
+        <select name="purpid">
+            <option th:each="Product:${Product}" th:text="${Product.pid}+' '+${Product.name}" th:type="number" th:value="${Product.pid}"></option>
+        </select>
+    </div>
+    </div>
+
+<div class="row">
+    <div align="right" class="col-6 mb-3">
+        <label for="name">Select Product Name</label>
+    </div>
+
+    <div align="left" class="col-6 mb-3">
+<select name="name">
+    <option th:each="Product:${Product}" th:text="${Product.name}" id="name" th:type="text" th:value="${Product.name}"></option>
+</select>
+    </div>
+</div>
+
+<div class="row">
+<div align="right" class="col-6 mb-3">
+    <label for="purvid">Enter Vendor id</label>
+</div>
+    <div align="left" class="col-6 mb-3">
+        <select name="purvid">
+            <option th:each="Vendor:${Vendor}" th:text="${Vendor.vid}+' '+${Vendor.vname}" th:type="number" th:value="${Vendor.vid}"></option>
+        </select>
+    </div>
+</div>
+
+
+    <div class="row">
+<div align="right" class="col-6 mb-3">
+    <label for="vname">Select Vendor Name</label>
+</div>
+    <div align="left" class="col-6 mb-3">
+
+    <select  name="vname">
+        <option th:each="Vendor:${Vendor}" th:text="${Vendor.vname}" th:type="text" th:value="${Vendor.vname}"></option>
+    </select>
+    </div>
+    </div>
+
+
+    <div class="row">
+<div align="right" class="col-6 mb-3">
+    <label for="pqauntity">Enter Quantity</label>
+</div>
+    <div align="left" class="col-6 mb-3">
+
+    <input type="number" name="pqauntity">
+    </div>
+    </div>
+
+<div class="row">
+<div align="right" class="col-6 mb-3">
+    <label for="pcostprice">Enter Cost Price</label>
+</div>
+    <div align="left" class="col-6 mb-3">
+    <input type="number" name="pcostprice">
+    </div>
+</div>
+    <div align="center">
+    <button>Submit</button>
+    </div>
+</div>
+</form>
+<a th:replace="~{footer::footer}"></a>
+<style>
+    label{
+    border-radius:30px;
+    background-color:black;
+    color:white;
+    width:200px;
+    align-text:center;
+    }
+
+</style>
+</body>
+</html>

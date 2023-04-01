@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Sales Details</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+</head>
+<body>
+<a th:replace="~{header::header}"></a>
+<h1 align="center">Add Sales Details</h1>
+<form action="/addSale" method="post">
+
+<div class="container">
+    <div align="center" class="mb-3 mt-3">
+        <label for="salepid">Select Sales id</label>
+        <select name="salepid">
+            <option th:each="Product:${Product}" th:text="${Product.pid}+' '+${Product.name}" th:type="number" th:value="${Product.pid}"></option>
+        </select>
+    </div>
+    <div align="center" class="mb-3">
+        <label for="name">Select Product Name</label>
+<select name="name">
+    <option th:each="Product:${Product}" th:text="${Product.name}" id="name" th:type="text" th:value="${Product.name}"></option>
+</select>
+    </div>
+
+    <div align="center" class="mb-3">
+        <label for="salecid">Enter Customer id</label>
+        <select name="salecid">
+            <option th:each="Customer:${Customer}" th:text="${Customer.cid}+' '+${Customer.cname}" th:type="number" th:value="${Customer.cid}"></option>
+        </select>
+    </div>
+
+    <div align="center" class="mb-3">
+        <label for="cname">Select Customer Name</label>
+    <select  name="cname">
+        <option th:each="Customer:${Customer}" th:text="${Customer.cname}" th:type="text" th:value="${Customer.cname}"></option>
+    </select>
+    </div>
+
+    <div align="center" class="mb-3">
+        <label for="sqauntity">Enter Quantity</label>
+    <input type="number" name="sqauntity">
+    </div>
+
+    <div align="center" class="mb-3">
+        <label for="csaleprice">Enter Cost Price</label>
+    <input type="number" name="csaleprice">
+    </div>
+    <div align="center">
+    <button>Submit</button>
+    </div>
+</div>
+</form>
+<a th:replace="~{footer::footer}"></a>
+<style>
+    label{
+    border-radius:30px;
+    background-color:black;
+    color:white;
+    width:200px;
+    }
+    select{
+    width:200px;
+    }
+    input{
+    width:200px;
+    }
+
+
+</style>
+</body>
+</html>

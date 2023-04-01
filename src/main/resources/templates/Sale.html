@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Sale</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+</head>
+<body>
+<link rel="stylesheet" href="app.css">
+
+<a th:replace="~{header::header}"></a>
+<div class="container">
+<h1 align="center">Welcome to Sale Details</h1>
+  <table>
+    <tr>
+        <td style="width:200px;border:2px solid black;">Sale id</td>
+        <td style="width:200px;border:2px solid black;">Sale id</td>
+        <td style="width:200px;border:2px solid black;">Customer id</td>
+  <td style="width:200px;border:2px solid black;">Product Name</td>
+      <td style="width:200px;border:2px solid black;">Customer Name</td>
+      <td style="width:200px;border:2px solid black;">Sale Cost</td>
+      <td style="width:200px;border:2px solid black;">Sale Qauntity</td>
+        <td style="width:200px;border:2px solid black;">Total</td>
+    </tr>
+    <tbody>
+    <tr style="width:200px;border:2px solid black;" th:each="Sale:${Sale}">
+        <td style="width:200px;border:2px solid black;" th:text="${Sale.saleid}"></td>
+        <td style="width:200px;border:2px solid black;" th:text="${Sale.salepid}"></td>
+        <td style="width:200px;border:2px solid black;" th:text="${Sale.salecid}"></td>
+      <td style="width:200px;border:2px solid black;" th:text="${Sale.name}"></td>
+      <td style="width:200px;border:2px solid black;" th:text="${Sale.cname}"></td>
+        <td style="width:200px;border:2px solid black;" th:text="${Sale.sqauntity}"></td>
+      <td style="width:200px;border:2px solid black;" th:text="${Sale.csaleprice}"></td>
+        <td style="width:200px;border:2px solid black;" th:text="${Sale.stotal}"></td>
+    </tr>
+    </tbody>
+
+  </table>
+
+</div>
+
+<div class="container mt-3">
+    <p>Total Sale:[[${totalItem}]]</p>
+
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            <li th:if="${currentPage!=0}" class="page-item"><a class="page-link" th:href="@{'/salepage/'+${currentPage-1}}">Previous</a></li>
+
+            <li th:each="i:${#numbers.sequence(1,totalPages)}" class="page-item">
+                <a class="page-link" th:classappend="${currentPage==i-1? 'active':''}" th:href="@{'/salepage/'+${i-1}}">[[${i}]]</a></li>
+
+            <li th:if="${currentPage+1!=totalPages}" class="page-item"><a class="page-link" th:href="@{'/salepage/'+${currentPage+1}}">Next</a></li>
+        </ul>
+    </nav>
+</div>
+
+
+<a th:replace="~{footer::footer}"></a>
+</body>
+</html>
