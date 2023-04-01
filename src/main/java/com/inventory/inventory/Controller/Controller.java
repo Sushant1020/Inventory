@@ -53,9 +53,9 @@ public class Controller {
         this.productService = productService;
     }
 
-    @GetMapping("/")
+    @GetMapping(path = "/")
     public String getAny(){
-        return "home";
+        return "Home";
     }
 
     @GetMapping(path = "/home")
@@ -64,7 +64,7 @@ public class Controller {
         model.addAttribute("Purchase",purchaseService.getPurchasenum());
         model.addAttribute("Sale",saleService.getProft());
         model.addAttribute("ProfitPer",saleService.getProfitPer());
-        return "home";
+        return "Home";
     }
     @GetMapping(path = "/Products")
     public String ListAllProducts(Model model){
