@@ -12,7 +12,49 @@
 <a th:replace="~{header::header}"></a>
 
 
-<div align="center" id="Product" class="row">
+<div class="container">
+    <div class="row">
+        <div class="card col-3">
+            <h3 class="bg-primary" style="color:white;">Total Products</h3>
+            <h2 class="num" th:data-val="${Product}"></h2>
+        </div>
+        <div class="card col-3">
+            <h3 class="bg-primary" style="color:white;">Total Orders</h3>
+            <h2 class="num" th:data-val="${Purchase}"></h2>
+        </div>
+        <div class="card col-3">
+            <h3 class="bg-primary" style="color:white;">Total Profit</h3>
+            <h2  th:text="${Sale}"></h2>
+        </div>
+        <div class="card col-3">
+            <h3 class="bg-primary" style="color:white;">Total Profit %</h3>
+            <h2  th:text="${ProfitPer}"></h2>
+
+        </div>
+
+
+
+        <script>
+        let valueDisplays=document.querySelectorAll(".num");
+        let interval=5000;
+        valueDisplays.forEach((valueDisplay)=>{
+        let startValue=0;
+        let endValue=parseInt(valueDisplay.getAttribute("data-val"));
+        let duration=Math.floor(interval/endValue);
+        let counter=setInterval(function(){
+        startValue+=1;
+        valueDisplay.textContent=startValue;
+        if(startValue==endValue){
+        clearInterval(counter);
+        }
+        },duration);
+        });
+
+    </script>
+
+
+
+        <div align="center" id="Product" class="row">
     <div class="col-4 mt-3">
         <a style="width:200px;" class="btn btn-info" href="/addProduct">Add Product Details</a>
     </div>
